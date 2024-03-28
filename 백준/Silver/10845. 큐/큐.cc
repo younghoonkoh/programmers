@@ -1,53 +1,10 @@
 #include <iostream>
 #include <string>
+#include <queue>
 
 using namespace std;
 
 
-const int MX = 1000005;
-int arr[MX] = {};
-int head, tail = 0;
-
-void push(int x) {
-    arr[tail++] = x;
-}
-
-int pop() {
-    if (tail == head) {
-        return -1;
-    }
-    head++;
-    return arr[head -1];
-}
-
-int size() {
-    return tail - head;
-}
-
-int empty() {
-    if (tail  ==head) {
-        return 1;
-    }
-    else return 0;
-}
-    
-int front() {
-    
-    if (tail == head) {
-        return -1;
-    }
-    
-    return arr[head];
-
-}
-
-
-int back() {
-    if (tail  == head) {
-        return -1;
-    }
-    return arr[tail - 1];
-}
 
 
 
@@ -60,31 +17,49 @@ int main(){
     int n;
     cin >> n;
 
-    while (n--) {
-        string s;
-        cin >> s;
+    queue<int> s;
 
-        if (s == "push") {
+    while (n--) {
+        string c;
+        cin >> c;
+
+        if (c == "push") {
             int t;
             cin >> t;
-            push(t);
+
+            s.push(t);
+        }
+        if (c == "pop") {
+            if (s.empty()) {
+                cout << -1 << "\n";
+            }
+            else
+            {
+                cout << s.front() << "\n";
+                s.pop();
+            }
+            
+        }
+        if (c == "size") {
+            cout << s.size()<<"\n";
         }
 
-        if (s == "pop") {
-            cout << pop() << "\n";
+        if (c == "empty") {
+            cout << s.empty() << "\n";
         }
 
-        if (s == "size") {
-            cout << size() << "\n";
+        if (c == "front") {
+            if (s.empty()) {
+                cout << -1 << "\n";
+            }
+            else cout << s.front() << "\n";
         }
-        if (s == "empty") {
-            cout << empty() << "\n";
-        }
-        if (s == "front") {
-            cout << front() << "\n";
-        }
-        if (s == "back") {
-            cout << back() << "\n";
+
+        if (c == "back") {
+            if (s.empty()) {
+                cout << -1 << "\n";
+            }
+            else cout << s.back() << "\n";
         }
     }
     
