@@ -31,7 +31,7 @@ int main() {
     for (int i = 0; i < N; ++i) {
        
         b[i] = a[i] - 'a' +1;
-        sum += b[i] * r % M;
+        sum = (sum + b[i] * r) % M;
         r = r * 31 % M;
     }
         
@@ -39,4 +39,4 @@ int main() {
     cout << sum;
 
     return 0;
-}
+} 
