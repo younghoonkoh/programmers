@@ -32,7 +32,7 @@ int main() {
         for (int i = 0; i < s.size(); ++i) {
             if (s[i] == c) {
                 idx = i;
-                break;                      // 숫자를 뽑아내면 for문 탈출
+                break;                      // 숫자의 위치 구해주기
             }
         }
         
